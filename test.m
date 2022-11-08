@@ -23,6 +23,15 @@ Nf = 3;                                 % Number of frames
 rigidBodyFrame = 2;                     % Specify rigid body frame
 ksi = 0.05;                             % Modal Damping Parameter
 
+% Create DOF idx map
+clear dofIdxMap
+for i = 1:Nf
+    dofIdxMap(i,:) = [1, 2, 3, 4, 5, 6] + (i - 1)*6;
+
+end
+
+dofIdxMap = reshape([1:Nf*6]', [Nf, 6]);
+
 % Sensed FEA dofs
 if(isempty(sensedFeaDofs_UI))
     sensedFeaDofs = 1;
