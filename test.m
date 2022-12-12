@@ -3,7 +3,7 @@
 if(~exist('beamLink','var'))
     sm_flex_fe_import_params
 end
-sm_flex_fe_import_beam_configure_load(bdroot,'Tip Load');
+% sm_flex_fe_import_beam_configure_load(bdroot,'Tip Load');
 
 
 % Parameters from Flexible Beam block in library
@@ -45,7 +45,6 @@ end
 
 % Create flexibility state-space model
 sys = sm_flex_body_lib_fei_form_statespace(Nf, M2, L2, K2, H2);
-
 
 
 

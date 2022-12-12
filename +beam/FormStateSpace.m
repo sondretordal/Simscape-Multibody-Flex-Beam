@@ -1,4 +1,4 @@
-function sys = sm_flex_body_lib_fei_form_statespace(Nf, M, L, K, H)
+function sys = FormStateSpace(Nf, M, L, K, H)
 % This function constructs the state-space matrices that calculate the
 % forces resisting deformation.  It assembles them from the mass,
 % stiffness, and other matrices that describe the flexible body.
@@ -12,7 +12,7 @@ function sys = sm_flex_body_lib_fei_form_statespace(Nf, M, L, K, H)
 % Copyright 2017-2022 The MathWorks, Inc.
 
 Nd = length(K);
-Nb = 6*Nf;
+Nb = 2*Nf;
 Nm = Nd - Nb;
 
 rb = 1:Nb;
@@ -52,7 +52,7 @@ end
 assert( isequal(size(H,2), Nd), ...
     'Problem with size of H in sm_flex_body_lib_fei_form_statespace' );
 Hb = H(:,rb);
-Hm = H(:,rm);C352
+Hm = H(:,rm);
 
 % Form state-space system
 Kmm2 = Mmm\Kmm;
