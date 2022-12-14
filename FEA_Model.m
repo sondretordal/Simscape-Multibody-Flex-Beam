@@ -5,8 +5,7 @@ clc
 
 % Symbolic variables
 q = sym('q', [4, 1], 'real');
-syms x L A rho E I 'real'
-
+syms x L A rho E I kd 'real'
 
 % Form q = B*a
 B = [
@@ -42,7 +41,11 @@ K = E*I*int(phi_x*phi_x', x, 0, L);
 % Create matlab function from K
 matlabFunction(K, 'File', '+beam/K', 'Vars', [E, I, L]);
 
+% Dampening matrix C 
+% kd is the coefficient of viscous damping for thematerial
+C = kd*A*int(phi*phi', x, 0, L);
 
-
+% Create matlab function from C
+matlabFunction(C, 'File', '+beam/C', 'Vars', [kd, A, L]);
 
 

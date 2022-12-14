@@ -18,9 +18,11 @@ function C = computeModalDampingMatrix(dampingRatio,K,M)
 % rigid-body modes may not be exactly zero. To avoid numerical issues,
 % check that the first six eigenvalues are close enough to zero. Then
 % replace them with exact 0 values.
+%     nd = 2;
+%     assert(all(abs(d(1:nd))/abs(d(nd+1)) < 1e-9),'Error due to "zero" eigenvalues.');
+%     d(1:nd) = 0;
 
-%     assert(all(abs(d)/abs(d(7)) < 1e-9),'Error due to "zero" eigenvalues.');
-%     d = 0;
+    d = max(d, 1e-9);
 
 % Vectors of generalized masses and natural frequencies
 
