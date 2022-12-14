@@ -42,8 +42,6 @@ K = E*I*int(phi_x*phi_x', x, 0, L);
 % Create matlab function from K
 matlabFunction(K, 'File', '+beam/K', 'Vars', [E, I, L]);
 
-% Create FAE SS Model
-sys = beam.FormStateSpace(1, M, 0, L, []);
 
 
 
